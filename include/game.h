@@ -14,8 +14,8 @@
 
 #define CASE_SIZE 15
 #define ROOM_NUMBER 5
-#define NB_CASE_X 80
-#define NB_CASE_Y 60
+#define NB_CASE_X SCREEN_WIDTH / CASE_SIZE
+#define NB_CASE_Y SCREEN_HEIGHT / CASE_SIZE
 
 bool init(SDL_Window **window, SDL_Renderer **renderer);
 void handle_input(bool *running, const Uint8 *keys, Player *player);

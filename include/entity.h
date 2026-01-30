@@ -23,7 +23,7 @@ enum Direction {
 };
 typedef enum Direction Direction;
 
-enum case_type {
+enum Case_type {
     EMPTY,
     WALL,
     PLAYER,
@@ -32,12 +32,12 @@ enum case_type {
     ITEM,
     MONSTER,
 };
-typedef enum case_type case_type;
+typedef enum Case_type Case_type;
 
 typedef struct 
 {
     int x, y;
-    case_type case_type;
+    Case_type case_type;
     int Id;
     bool afficher;
 } Case;
