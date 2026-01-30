@@ -26,7 +26,7 @@ int main(void)
             cases[i+NB_CASE_X*j].case_type = EMPTY;
         }
     }
-
+    fontInit();
     Player player = {
         .x = 7,
         .y = 7,

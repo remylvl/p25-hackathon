@@ -11,7 +11,7 @@ TTF_Font* font;
 
 void fontInit(){
         TTF_Init();
-        font = TTF_OpenFont("arial.ttf", 12);
+        font = TTF_OpenFont("./font/ARIAL.TTF", 20);
         fColor.r = 255;
         fColor.g = 255;
         fColor.b = 255;
@@ -82,12 +82,20 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate)
     }
 	
     if (gamestate==1){
-        SDL_Surface* fontSurface;
         SDL_Rect inventory_rect1 = {
                     10*CASE_SIZE, 5*CASE_SIZE,
                     CASE_SIZE*60, CASE_SIZE*50};
         SDL_SetRenderDrawColor(renderer, 20, 20, 20, 255);
         SDL_RenderFillRect(renderer, &inventory_rect1);
+        
+        SDL_Surface* fontSurface = TTF_RenderText_Solid(font, "Inventory", fColor);
+        if (fontSurface) {
+            SDL_Texture* fontTexture = SDL_CreateTextureFromSurface(renderer, fontSurface);
+            SDL_Rect fontRect = {38*CASE_SIZE, 6*CASE_SIZE, fontSurface->w, fontSurface->h};
+            SDL_RenderCopy(renderer, fontTexture, NULL, &fontRect);
+            SDL_DestroyTexture(fontTexture);
+            SDL_FreeSurface(fontSurface);
+        }
     }
     
 
