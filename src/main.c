@@ -3,6 +3,7 @@
 #include "entity.h"
 #include "game.h"
 
+
 int main(void)
 {
     SDL_Window *window = NULL;
