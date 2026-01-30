@@ -3,6 +3,7 @@
 #include "game.h"
 #include "dungeon.h"
 #include <stdio.h>
+#include "dungeon.h"
 
 bool init(SDL_Window **window, SDL_Renderer **renderer)
 {
