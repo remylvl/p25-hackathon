@@ -58,6 +58,12 @@ void render(SDL_Renderer *renderer, Case *cases)
                 SDL_FreeSurface(surface);
                 SDL_RenderCopy(renderer,texture,NULL,&case_rect);
                 break;
+                case PORTE :                
+                surface = SDL_LoadBMP("images/door.bmp");
+                texture = SDL_CreateTextureFromSurface(renderer,surface);
+                SDL_FreeSurface(surface);
+                SDL_RenderCopy(renderer,texture,NULL,&case_rect);
+                break;
                 default : break;
             }
             
