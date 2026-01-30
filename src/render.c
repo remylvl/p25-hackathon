@@ -25,13 +25,11 @@ void render(SDL_Renderer *renderer, Case *cases)
                 SDL_SetRenderDrawColor(renderer, 77, 27, 0, 255);
                 SDL_RenderFillRect(renderer, &case_rect);
                 break;
-                case EMPTY : 
+                case PLAYER :
                 surface = SDL_LoadBMP("images/inside.bmp");
                 texture = SDL_CreateTextureFromSurface(renderer,surface);
                 SDL_FreeSurface(surface);
                 SDL_RenderCopy(renderer,texture,NULL,&case_rect);
-                break;
-                case PLAYER : 
                 surface = SDL_LoadBMP("images/hero.bmp");
                 texture = SDL_CreateTextureFromSurface(renderer,surface);
                 SDL_FreeSurface(surface);

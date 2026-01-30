@@ -44,7 +44,7 @@ int main(void)
 
         
         update(&player, cases);
-        render(renderer, &player, cases);
+        render(renderer, cases);
     }
 
     cleanup(window, renderer);
