@@ -25,11 +25,11 @@ int main(void)
     }
 
     Player player = {
-        .x = 40,
-        .y = 20,
-        .w = PLAYER_WIDTH,
-        .h = PLAYER_HEIGHT,
+        .x = 40*NB_CASE_X,
+        .y = 20*NB_CASE_Y,
         .d = NONE};
+    
+    cases[player.x + player.y * NB_CASE_X].case_type = PLAYER;
 
     while (running)
     {
