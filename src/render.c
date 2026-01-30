@@ -19,7 +19,7 @@ void fontInit(){
         fColor.b = 255;
 }
 
-void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate)
+void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate, Player player)
 {
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -77,6 +77,7 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate)
                 SDL_FreeSurface(surface);
                 SDL_RenderCopy(renderer,texture,NULL,&case_rect);
                 break;
+
                 case PORTE :                
                 surface = SDL_LoadBMP("images/door.bmp");
                 texture = SDL_CreateTextureFromSurface(renderer,surface);
@@ -104,6 +105,18 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate)
             SDL_DestroyTexture(fontTexture);
             SDL_FreeSurface(fontSurface);
         }
+
+        if(player.armor){
+            SDL_Surface* fontSurface_Armor = TTF_RenderText_Solid(font, "hallo", fColor);
+            if (fontSurface) {
+                SDL_Texture* fontTexture_Armor = SDL_CreateTextureFromSurface(renderer, fontSurface_Armor);
+                SDL_Rect fontRect_Armor = {22*CASE_SIZE, 8*CASE_SIZE, fontSurface_Armor->w, fontSurface_Armor->h};
+                SDL_RenderCopy(renderer, fontTexture_Armor, NULL, &fontRect_Armor);
+                SDL_DestroyTexture(fontTexture_Armor);
+                SDL_FreeSurface(fontSurface_Armor);
+            }
+        } 
+
     }
     
 
