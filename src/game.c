@@ -57,26 +57,26 @@ void handle_input(bool *running, const Uint8 *keys, Player *player)
 void update(Player *player)
 {
     switch(player->d){
-        case UP: player->y -= CASE_SIZE;
+        case UP: player->y -= 1;
         break;
-        case DOWN: player->y += CASE_SIZE;
+        case DOWN: player->y += 1;
         break;
-        case LEFT: player->x -= CASE_SIZE;
+        case LEFT: player->x -= 1;
         break;
-        case RIGHT: player->x += CASE_SIZE;
+        case RIGHT: player->x += 1;
         break;
         default: break;
     }
 
     if (player->x < 0)
         player->x = 0;
-    if (player->x + player->w > SCREEN_WIDTH)
-        player->x = SCREEN_WIDTH - player->w;
+    if (player->x  > NB_CASE_X)
+        player->x = NB_CASE_X;
 
     if (player->y < 0)
         player->y = 0;
-    if (player->y + player->h > SCREEN_HEIGHT)
-        player->y = SCREEN_HEIGHT - player->h;
+    if (player->y > NB_CASE_Y)
+        player->y = NB_CASE_Y;
 
 }
 
@@ -89,7 +89,7 @@ void render(SDL_Renderer *renderer, Player *player)
 	SDL_Surface *surface=SDL_LoadBMP("images/hero.bmp");
     SDL_Texture *texture=SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
-    SDL_Rect rect = {player->x,player->y,player->w,player->h};
+    SDL_Rect rect = {player->x*CASE_SIZE,player->y*CASE_SIZE,PLAYER_WIDTH,PLAYER_HEIGHT};
     SDL_RenderCopy(renderer,texture,NULL,&rect);
 
     SDL_RenderPresent(renderer);

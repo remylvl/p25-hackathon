@@ -24,8 +24,8 @@ int main(void)
     }
 
     Player player = {
-        .x = CASE_SIZE * 20,
-        .y = CASE_SIZE * 20,
+        .x = 40,
+        .y = 20,
         .w = PLAYER_WIDTH,
         .h = PLAYER_HEIGHT,
         .d = NONE};
