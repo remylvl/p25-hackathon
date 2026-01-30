@@ -92,3 +92,7 @@ void cleanup(SDL_Window *window, SDL_Renderer *renderer)
         SDL_DestroyWindow(window);
     SDL_Quit();
 }
+
+void spawn_room(Room* Room){
+    
+}

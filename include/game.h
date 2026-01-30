@@ -5,12 +5,14 @@
 #include <stdbool.h>
 #include "entity.h"
 
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 1200
+#define SCREEN_HEIGHT 900
 
-#define PLAYER_WIDTH 20
-#define PLAYER_HEIGHT 20
+#define PLAYER_WIDTH 10
+#define PLAYER_HEIGHT 15
 #define PLAYER_SPEED 200.0f
+
+#define CASE_SIZE 15
 
 bool init(SDL_Window **window, SDL_Renderer **renderer);
 void handle_input(bool *running, const Uint8 *keys, Entity *player);
