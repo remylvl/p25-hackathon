@@ -22,7 +22,7 @@ void spawn_room(int x, int y, int w, int h, Case* cases){
     }
 }
 
-void spawn_corridor(Case porte1, Case porte2, Case* cases){
+void spawn_corridor(doublet porte1, doublet porte2, Case* cases){
     int x1 = porte1.x;
     int y1 = porte1.y;
     int x2 = porte2.x;
@@ -90,18 +90,35 @@ void create_dungeon(Case* cases){
         if (k>2){
             int xp = rand() % (rooms[k].w - 2) + rooms[k].x + 1;
             cases[xp + rooms[k].y * NB_CASE_X].case_type = PORTE;
+            rooms[k].porte_nord.x = xp;
+            rooms[k].porte_nord.y = rooms[k].y;
         }
         if (k<6){
             int xp = rand() % (rooms[k].w - 2) + rooms[k].x + 1;
             cases[xp + (rooms[k].y+rooms[k].h -1) * NB_CASE_X].case_type = PORTE;
+            rooms[k].porte_sud.x = xp;
+            rooms[k].porte_sud.y = rooms[k].y+rooms[k].h -1;
         }
         if (k%3 != 2){
             int yp = rand() % (rooms[k].h - 2) + rooms[k].y + 1;
             cases[(rooms[k].x + rooms[k].w - 1) + yp*NB_CASE_X ].case_type = PORTE;
+            rooms[k].porte_est.x = (rooms[k].x + rooms[k].w - 1);
+            rooms[k].porte_est.y = yp;
         }
         if (k%3 != 0){
             int yp = rand() % (rooms[k].h - 2) + rooms[k].y + 1;
             cases[rooms[k].x  + yp*NB_CASE_X ].case_type = PORTE;
+            rooms[k].porte_ouest.x = rooms[k].x;
+            rooms[k].porte_ouest.y = yp;
+        }
+    }
+    //maintenant on crée les couloirs
+    for (int k = 0; k<9 ; k++){
+        if (k>2){
+            spawn_corridor(rooms[k].porte_nord, rooms[k-3].porte_sud, cases);
+        }
+        if (k%3 != 0){
+            spawn_corridor(rooms[k].porte_ouest, rooms[k-1].porte_est, cases);
         }
     }
 }
