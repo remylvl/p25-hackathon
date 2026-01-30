@@ -17,7 +17,6 @@ enum Direction {
 };
 typedef enum Direction Direction;
 
-
 enum Armor {
     NOTHING, //0
     METAL //1
@@ -28,6 +27,15 @@ typedef enum {
     ROOM,
     CORRIDOR,
 } room_type;
+
+typedef enum {
+    EMPTY,
+    WALL,
+    ITEM,
+    PLAYER,
+    MONSTER,
+    INSIDE,
+} case_type;
 
 typedef struct {
     int x, y;
