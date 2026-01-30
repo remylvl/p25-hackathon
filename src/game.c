@@ -97,7 +97,7 @@ void update(Player *player, Case *cases)
         default: break;
     }
 
-    if(cases[player->x + NB_CASE_X * player->y].case_type = ITEM){
+    if(cases[player->x + NB_CASE_X * player->y].case_type == ITEM){
         int loot_type = rand() % 3;
         switch(loot_type){
             case 0: player->armor += 1;
