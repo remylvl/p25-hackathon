@@ -6,3 +6,8 @@ NIVEAU 1
 * Créer un gamestate avec menu et inventaire (enum)
 * Adapter les fonctions update et handle_keys
 * Adapter render
+
+=> créer une liste de cases (main.c) (initialiser à empty)
+=> adapter render
+=> adapter create_room
+=> adapter joueur

@@ -8,6 +8,12 @@ enum Weapon {
 };
 typedef enum Weapon Weapon;
 
+enum Armor {
+    NOTHING, //0
+    METAL //1
+};
+typedef enum Armor Armor;
+
 enum Direction {
     UP, 
     DOWN, 
@@ -17,23 +23,37 @@ enum Direction {
 };
 typedef enum Direction Direction;
 
-
-enum Armor {
-    NOTHING, //0
-    METAL //1
+enum case_type {
+    EMPTY,
+    WALL,
+    PLAYER,
+    INSIDE,
+    PORTE,
+    ITEM,
+    MONSTER,
 };
-typedef enum Armor Armor;
+typedef enum case_type case_type;
 
-typedef enum {
-    ROOM,
-    CORRIDOR,
-} room_type;
+typedef struct 
+{
+    int x, y;
+    case_type case_type;
+    int Id;
+    bool afficher;
+} Case;
 
-typedef struct {
+
+typedef struct 
+{
     int x, y;
     int w, h;
-    room_type type;
+    bool is_active;
 } Room;
+
+typedef struct
+{
+    
+} CORRIDOR;
 
 typedef struct
 {
@@ -48,7 +68,9 @@ typedef struct
 
 typedef struct
 {
-
+    int x, y;
+    int pv;
+    int damage;
 } Monster;
 
 

@@ -17,6 +17,13 @@ int main(void)
     bool running = true;
     Uint32 last_ticks = SDL_GetTicks();
 
+    Case *cases = malloc(NB_CASE_X*NB_CASE_Y*sizeof(Case));
+    for (size_t i=0; i < NB_CASE_X; i++){
+        for (size_t j=0; j<NB_CASE_Y; j++){
+            cases[i+NB_CASE_X*j].case_type = EMPTY;
+        }
+    }
+
     Player player = {
         .x = CASE_SIZE * 20,
         .y = CASE_SIZE * 20,
@@ -42,4 +49,5 @@ int main(void)
 
     cleanup(window, renderer);
     return 0;
+    free(cases);
 }

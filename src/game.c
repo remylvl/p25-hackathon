@@ -106,7 +106,7 @@ void cleanup(SDL_Window *window, SDL_Renderer *renderer)
     SDL_Quit();
 }
 
-Room spawn_room(float *x, float *y, float *w, float *h){
+Room spawn_room(int *x, int *y, int *w, int *h){
     Room room = {
         .x = *x,
         .y = *y,
