@@ -82,6 +82,8 @@ void create_dungeon(Case* cases){
         rooms[k].porte_ouest.x = 0;
         rooms[k].porte_ouest.y = 0;
         spawn_room(rooms[k].x, rooms[k].y, rooms[k].w, rooms[k].h, cases); 
+        spawn_chest_in_room(&rooms[k], cases);
+        spawn_cow_in_room(&rooms[k], cases);
         // une fois les rooms créés on fais les portes
     }
     for (int k = 0 ; k < 9 ; k++){

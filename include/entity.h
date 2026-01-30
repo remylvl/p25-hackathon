@@ -29,6 +29,20 @@ enum Armor {
 };
 typedef enum Armor Armor;
 
+enum Mob {
+    VACHE, //0
+    BLOB, //1
+    GOBELIN, //2
+    SQUELETTE, //3
+    GOULE, //4
+    MOMIE, //5
+    CHEVALIER_MAUDIT, //6
+    LICORNE_PRIME, //7
+    DRAGON_ROUGE, //8
+    DIEU_DÉMON, //9
+};
+typedef enum Mob Mob;
+
 enum Direction {
     UP, 
     DOWN, 
@@ -53,6 +67,7 @@ typedef struct
     int pv;
     int damage;
     int Id;
+    Mob Mob;
 } Monster;
 
 #endif

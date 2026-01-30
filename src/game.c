@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "game.h"
+#include "dungeon.h"
 #include <stdio.h>
 #include "dungeon.h"
 
@@ -56,6 +57,12 @@ void handle_input(bool *running, const Uint8 *keys, Player *player, Gamestate *g
             player->d = DOWN;
         if (keys[SDL_SCANCODE_I])
             *gamestate = 1;
+    }
+
+    if(*gamestate==1)
+    {
+        if (keys[SDL_SCANCODE_ESCAPE])
+            *gamestate = 0;
     }
 
 }
