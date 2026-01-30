@@ -23,6 +23,7 @@ int main(void)
     for (size_t i=0; i < NB_CASE_X; i++){
         for (size_t j=0; j<NB_CASE_Y; j++){
             cases[i+NB_CASE_X*j].case_type = EMPTY;
+            cases[i+NB_CASE_X*j].is_visible = true;
         }
     }
 

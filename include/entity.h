@@ -39,7 +39,7 @@ typedef struct
     int x, y;
     Case_type case_type;
     int Id;
-    bool afficher;
+    bool is_visible;
 } Case;
 
 
