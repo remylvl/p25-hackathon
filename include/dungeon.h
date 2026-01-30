@@ -36,6 +36,7 @@ typedef struct
 } Room;
 
 typedef enum {
+    START_MENU,
     GAME,
     INVENTORY,
 } Gamestate;

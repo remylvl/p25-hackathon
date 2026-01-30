@@ -44,7 +44,13 @@ void handle_input(bool *running, const Uint8 *keys, Player *player, Gamestate *g
             *running = false;
     }
 
-    if(*gamestate==0)
+    if (*gamestate==0)
+    {
+        if(keys[SDL_SCANCODE_1])
+            *gamestate=1;
+    }
+
+    if(*gamestate==1)
     {
         player->d = NONE;
         if (keys[SDL_SCANCODE_LEFT])
@@ -59,10 +65,10 @@ void handle_input(bool *running, const Uint8 *keys, Player *player, Gamestate *g
             *gamestate = 1;
     }
 
-    if(*gamestate==1)
+    if(*gamestate==2)
     {
         if (keys[SDL_SCANCODE_ESCAPE])
-            *gamestate = 0;
+            *gamestate = 1;
     }
 
 }
