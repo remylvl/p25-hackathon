@@ -17,8 +17,8 @@ int main(void)
     Uint32 last_ticks = SDL_GetTicks();
 
     Player player = {
-        .x = SCREEN_WIDTH / 2 - PLAYER_WIDTH / 2,
-        .y = SCREEN_HEIGHT - 60,
+        .x = CASE_SIZE * 20,
+        .y = CASE_SIZE * 20,
         .w = PLAYER_WIDTH,
         .h = PLAYER_HEIGHT,
         .d = NONE};
@@ -27,8 +27,8 @@ int main(void)
     {
         Uint32 ticks = SDL_GetTicks();
         float dt = (ticks - last_ticks) / 1000.0f;
-        if (dt > 0.05f)
-            dt = 0.05f;
+        if (dt < 0.25f)
+            continue;
         last_ticks = ticks;
 
         SDL_PumpEvents();

@@ -54,7 +54,17 @@ void handle_input(bool *running, const Uint8 *keys, Player *player)
 
 void update(Player *player, float dt)
 {
-    
+    switch(player->d){
+        case UP: player->y -= CASE_SIZE;
+        break;
+        case DOWN: player->y += CASE_SIZE;
+        break;
+        case LEFT: player->x -= CASE_SIZE;
+        break;
+        case RIGHT: player->x += CASE_SIZE;
+        break;
+        default: break;
+    }
 
     if (player->x < 0)
         player->x = 0;
