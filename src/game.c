@@ -2,6 +2,7 @@
 #include <SDL2/SDL_image.h>
 #include "game.h"
 #include <stdio.h>
+#include "dungeon.h"
 
 bool init(SDL_Window **window, SDL_Renderer **renderer)
 {
