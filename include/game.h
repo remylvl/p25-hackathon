@@ -21,13 +21,14 @@
 bool init(SDL_Window **window, SDL_Renderer **renderer);
 void handle_input(bool *running, const Uint8 *keys, Player *player, Gamestate *gamestate);
 void update(Player *player, Case *cases);
-void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate);
+void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate, Player player);
 void cleanup(SDL_Window *window, SDL_Renderer *renderer);
 void spawn_room(int x, int y, int w, int h, Case* cases);
 void spawn_corridor(doublet porte1, doublet porte2, Case* cases);
 void create_dungeon(Case* cases);
 void spawn_cow_in_room(Room *room, Case *cases);
 void spawn_chest_in_room(Room *room, Case *cases);
+void fontInit();
 void spawn_corridorx(doublet porte1, doublet porte2, Case* cases);
 void spawn_corridory(doublet porte1, doublet porte2, Case* cases);
 void fontInit();

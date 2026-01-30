@@ -2,6 +2,7 @@
 #define ENTITY_H
 
 enum Weapon {
+    BARE_HANDS, //0
     RUSTED_DAGGER, //0
     TRAVELER_SHORTSWORD, //1
     IRON_AXE, //2
@@ -16,6 +17,7 @@ enum Weapon {
 typedef enum Weapon Weapon;
 
 enum Armor {
+    NAKED, //0
     TORN_TUNIC, //0
     HARDENED_LEATHER_VEST, //1
     REINFORCED_LEATHER_ARMOR, //2

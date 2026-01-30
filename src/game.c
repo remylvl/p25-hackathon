@@ -44,7 +44,13 @@ void handle_input(bool *running, const Uint8 *keys, Player *player, Gamestate *g
             *running = false;
     }
 
-    if(*gamestate==0)
+    if (*gamestate==0)
+    {
+        if(keys[SDL_SCANCODE_1])
+            *gamestate=1;
+    }
+
+    if(*gamestate==1)
     {
         player->d = NONE;
         if (keys[SDL_SCANCODE_LEFT])
@@ -59,10 +65,10 @@ void handle_input(bool *running, const Uint8 *keys, Player *player, Gamestate *g
             *gamestate = 1;
     }
 
-    if(*gamestate==1)
+    if(*gamestate==2)
     {
         if (keys[SDL_SCANCODE_ESCAPE])
-            *gamestate = 0;
+            *gamestate = 1;
     }
 
 }
@@ -70,26 +76,42 @@ void handle_input(bool *running, const Uint8 *keys, Player *player, Gamestate *g
 void update(Player *player, Case *cases)
 {
     switch(player->d){
-        case UP: 
-        if(cases[player->x + NB_CASE_X * (player->y-1)].case_type != EMPTY && cases[player->x + NB_CASE_X * (player->y-1)].case_type != WALL){        
+        case UP:
+        if(cases[player->x + NB_CASE_X * (player->y-1)].case_type == MONSTER){
+            player->pv -= 1;
+            cases[player->x + NB_CASE_X * (player->y-1)].case_type = INSIDE;
+        }
+        if(cases[player->x + NB_CASE_X * (player->y-1)].case_type != EMPTY && cases[player->x + NB_CASE_X * (player->y-1)].case_type != WALL && cases[player->x + NB_CASE_X * (player->y-1)].case_type != MONSTER){        
         cases[player->x + NB_CASE_X * player->y].case_type = INSIDE;
         player->y -= 1;
         }
         break;
-        case DOWN: 
-        if(cases[player->x + NB_CASE_X * (player->y+1)].case_type != EMPTY && cases[player->x + NB_CASE_X * (player->y+1)].case_type != WALL){        
+        case DOWN:
+        if(cases[player->x + NB_CASE_X * (player->y+1)].case_type == MONSTER){
+            player->pv -= 1;
+            cases[player->x + NB_CASE_X * (player->y+1)].case_type = INSIDE;
+        } 
+        if(cases[player->x + NB_CASE_X * (player->y+1)].case_type != EMPTY && cases[player->x + NB_CASE_X * (player->y+1)].case_type != WALL && cases[player->x + NB_CASE_X * (player->y+1)].case_type != MONSTER){        
         cases[player->x + NB_CASE_X * player->y].case_type = INSIDE;
         player->y += 1;
         }
         break;
         case LEFT:
-        if(cases[player->x + NB_CASE_X * player->y - 1].case_type != EMPTY && cases[player->x + NB_CASE_X * player->y - 1].case_type != WALL){        
+        if(cases[player->x + NB_CASE_X * player->y - 1].case_type == MONSTER){
+            player->pv -= 1;
+            cases[player->x + NB_CASE_X * player->y - 1].case_type = INSIDE;
+        } 
+        if(cases[player->x + NB_CASE_X * player->y - 1].case_type != EMPTY && cases[player->x + NB_CASE_X * player->y - 1].case_type != WALL && cases[player->x + NB_CASE_X * player->y - 1].case_type != MONSTER){        
         cases[player->x + NB_CASE_X * player->y].case_type = INSIDE;
         player->x -= 1;
         }
         break;
-        case RIGHT: 
-        if(cases[player->x + NB_CASE_X * player->y + 1].case_type != EMPTY && cases[player->x + NB_CASE_X * player->y + 1].case_type != WALL){        
+        case RIGHT:
+        if(cases[player->x + NB_CASE_X * player->y +1].case_type == MONSTER){
+            player->pv -= 1;
+            cases[player->x + NB_CASE_X * player->y +1].case_type = INSIDE;
+        }  
+        if(cases[player->x + NB_CASE_X * player->y + 1].case_type != EMPTY && cases[player->x + NB_CASE_X * player->y + 1].case_type != WALL && cases[player->x + NB_CASE_X * player->y + 1].case_type != MONSTER){        
         cases[player->x + NB_CASE_X * player->y].case_type = INSIDE;
         player->x += 1;
         }

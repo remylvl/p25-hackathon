@@ -15,7 +15,7 @@ int main(void)
         return 1;
     }
 
-    Gamestate gamestate = GAME;
+    Gamestate gamestate = 0;
 
     bool running = true;
     Uint32 last_ticks = SDL_GetTicks();
@@ -32,8 +32,8 @@ int main(void)
         .x = 7,
         .y = 7,
         .pv = 10,
-        .weapon = 0,
-        .armor = 0,
+        .weapon = 1,
+        .armor = 1,
         .d = NONE};
     cases[player.x + player.y * NB_CASE_X].case_type = PLAYER;
 
@@ -51,7 +51,7 @@ int main(void)
         const Uint8 *keys = SDL_GetKeyboardState(NULL);
         handle_input(&running, keys, &player, &gamestate);
         update(&player, cases);
-        render(renderer, cases, gamestate);
+        render(renderer, cases, gamestate, player);
     }
 
     cleanup(window, renderer);
