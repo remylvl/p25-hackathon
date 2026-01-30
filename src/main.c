@@ -14,6 +14,8 @@ int main(void)
         return 1;
     }
 
+    Gamestate gamestate = GAME;
+
     bool running = true;
     Uint32 last_ticks = SDL_GetTicks();
 
@@ -37,7 +39,7 @@ int main(void)
         float dt = (ticks - last_ticks) / 1000.0f;
         SDL_PumpEvents();
         const Uint8 *keys = SDL_GetKeyboardState(NULL);
-        handle_input(&running, keys, &player);
+        handle_input(&running, keys, &player, &gamestate);
         if (dt < 0.1f)
             continue;
         last_ticks = ticks;
