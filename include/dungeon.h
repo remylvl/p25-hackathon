@@ -31,3 +31,5 @@ typedef enum {
     GAME,
     INVENTORY,
 } Gamestate;
+
+#endif

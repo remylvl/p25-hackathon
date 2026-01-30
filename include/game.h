@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <stdbool.h>
 #include "entity.h"
+#include "dungeon.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 960

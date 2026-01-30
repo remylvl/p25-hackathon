@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include "entity.h"
 #include "game.h"
+#include "dungeon.h"
 
 
 int main(void)
