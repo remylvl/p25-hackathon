@@ -87,11 +87,11 @@ void create_dungeon(Case* cases){
         }
         if (k%3 != 2){
             int yp = rand() % (rooms[k].h - 2) + rooms[k].y + 1;
-            cases[(rooms[k].x + rooms[k].w - 1) + (rooms[k].y + rooms[k].h - 1)*NB_CASE_X ].case_type = PORTE;
+            cases[(rooms[k].x + rooms[k].w - 1) + yp*NB_CASE_X ].case_type = PORTE;
         }
         if (k%3 != 0){
             int yp = rand() % (rooms[k].h - 2) + rooms[k].y + 1;
-            cases[rooms[k].x  + (rooms[k].y + rooms[k].h - 1)*NB_CASE_X ].case_type = PORTE;
+            cases[rooms[k].x  + yp*NB_CASE_X ].case_type = PORTE;
         }
     }
 }
