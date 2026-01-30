@@ -73,5 +73,9 @@ typedef struct
 } Monster;
 
 
+typedef enum {
+    GAME,
+    INVENTORY,
+} Gamestate;
 
 #endif

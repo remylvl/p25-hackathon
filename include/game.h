@@ -18,7 +18,7 @@
 #define NB_CASE_Y SCREEN_HEIGHT / CASE_SIZE
 
 bool init(SDL_Window **window, SDL_Renderer **renderer);
-void handle_input(bool *running, const Uint8 *keys, Player *player);
+void handle_input(bool *running, const Uint8 *keys, Player *player, Gamestate *gamestate);
 void update(Player *player, Case *cases);
 void render(SDL_Renderer *renderer, Case *cases);
 void cleanup(SDL_Window *window, SDL_Renderer *renderer);
