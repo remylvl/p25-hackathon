@@ -14,6 +14,8 @@ int main(void)
         return 1;
     }
 
+    Gamestate gamestate = GAME;
+
     bool running = true;
     Uint32 last_ticks = SDL_GetTicks();
 
@@ -25,13 +27,13 @@ int main(void)
     }
 
     Player player = {
-        .x = 40,
-        .y = 30,
+        .x = 5,
+        .y = 5,
         .d = NONE};
     
     cases[player.x + player.y * NB_CASE_X].case_type = PLAYER;
 
-    spawn_room(30, 20, 20, 20, cases);
+    create_dungeon(cases);
 
     while (running)
     {
@@ -39,7 +41,7 @@ int main(void)
         float dt = (ticks - last_ticks) / 1000.0f;
         SDL_PumpEvents();
         const Uint8 *keys = SDL_GetKeyboardState(NULL);
-        handle_input(&running, keys, &player);
+        handle_input(&running, keys, &player, &gamestate);
         if (dt < 0.1f)
             continue;
         last_ticks = ticks;

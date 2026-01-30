@@ -7,9 +7,10 @@
 
 void render(SDL_Renderer *renderer, Case *cases)
 {
+
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
-
+    
     for (size_t i=0; i<NB_CASE_X; i++){
         for (size_t j=0; j<NB_CASE_Y; j++){
             Case_type case_type_actuel = cases[i+j*NB_CASE_X].case_type;

@@ -33,7 +33,7 @@ bool init(SDL_Window **window, SDL_Renderer **renderer)
     return true;
 }
 
-void handle_input(bool *running, const Uint8 *keys, Player *player)
+void handle_input(bool *running, const Uint8 *keys, Player *player, Gamestate *gamestate)
 {
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -42,15 +42,20 @@ void handle_input(bool *running, const Uint8 *keys, Player *player)
             *running = false;
     }
 
-    player->d = NONE;
-    if (keys[SDL_SCANCODE_LEFT])
-        player->d = LEFT;
-    if (keys[SDL_SCANCODE_RIGHT])
-        player->d = RIGHT;
-    if (keys[SDL_SCANCODE_UP])
-        player->d = UP;
-    if (keys[SDL_SCANCODE_DOWN])
-        player->d = DOWN;
+    if(*gamestate==0)
+    {
+        player->d = NONE;
+        if (keys[SDL_SCANCODE_LEFT])
+            player->d = LEFT;
+        if (keys[SDL_SCANCODE_RIGHT])
+            player->d = RIGHT;
+        if (keys[SDL_SCANCODE_UP])
+            player->d = UP;
+        if (keys[SDL_SCANCODE_DOWN])
+            player->d = DOWN;
+        if (keys[SDL_SCANCODE_I])
+            *gamestate = 1;
+    }
 
 }
 

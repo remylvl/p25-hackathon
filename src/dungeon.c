@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include "entity.h"
 #include "game.h"
+#include <stdlib.h>
 
 //x et y sont le coin en haut à gauche de la room
 void spawn_room(int x, int y, int w, int h, Case* cases){
@@ -61,4 +62,16 @@ void spawn_corridor(Case porte1, Case porte2, Case* cases){
     for (int k = ymin + 1; k < ymax ; k++){
         cases[xmax - 1 + k*NB_CASE_X].case_type = INSIDE;
     }   
+}
+
+void create_dungeon(Case* cases){
+    Room* rooms = malloc(9*sizeof(Room));
+    for (int k = 0 ; k < 9 ; k++){
+        rooms[k].w = rand() % 11 + 12;
+        rooms[k].h = rand() % 11 + 5;
+        rooms[k].x = rand() % 5 + ((k%3) * 26);
+        rooms[k].y = rand() % 5 + ((k/3) * 20);
+        rooms[k].is_active = false;
+        spawn_room(rooms[k].x, rooms[k].y, rooms[k].w, rooms[k].h, cases);
+    }
 }
