@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include "entity.h"
 
-#define SCREEN_WIDTH 1260
+#define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 960
 
 #define PLAYER_WIDTH 10
