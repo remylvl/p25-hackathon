@@ -19,8 +19,13 @@
 
 bool init(SDL_Window **window, SDL_Renderer **renderer);
 void handle_input(bool *running, const Uint8 *keys, Player *player);
+<<<<<<< HEAD
 void update(Player *player, Case *cases);
 void render(SDL_Renderer *renderer, Player *player);
+=======
+void update(Player *player);
+void render(SDL_Renderer *renderer, Player *player, Case *cases);
+>>>>>>> 0d25ba7080839353a37d1758d93df6b4916e5862
 void cleanup(SDL_Window *window, SDL_Renderer *renderer);
 Room spawn_room(int *x, int *y, int *w, int *h);
 
