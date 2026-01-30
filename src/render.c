@@ -26,7 +26,7 @@ void render(SDL_Renderer *renderer, Player *player, Case *cases)
                     i*CASE_SIZE, j*CASE_SIZE,
                     CASE_SIZE, CASE_SIZE};
                 
-                SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
                 SDL_RenderFillRect(renderer, &case_rect);
             }
             else{
