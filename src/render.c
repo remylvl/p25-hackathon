@@ -11,11 +11,11 @@ void render(SDL_Renderer *renderer, Player *player, Case *cases)
     SDL_RenderClear(renderer);
 
     for (size_t i=0; i<NB_CASE_X; i++){
-        for (size_t j=0; j<NB_CASE_Y; i++){
+        for (size_t j=0; j<NB_CASE_Y; j++){
             Case_type case_type_actuel = cases[i+j*NB_CASE_X].case_type;
             if ( case_type_actuel == WALL){
                 SDL_Rect case_rect = {
-                    i, j,
+                    i*CASE_SIZE, j*CASE_SIZE,
                     CASE_SIZE, CASE_SIZE};
                 
                 SDL_SetRenderDrawColor(renderer, 77, 27, 0, 255);
@@ -23,7 +23,7 @@ void render(SDL_Renderer *renderer, Player *player, Case *cases)
             }
             else if (case_type_actuel == EMPTY){
                 SDL_Rect case_rect = {
-                    i, j,
+                    i*CASE_SIZE, j*CASE_SIZE,
                     CASE_SIZE, CASE_SIZE};
                 
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -31,7 +31,7 @@ void render(SDL_Renderer *renderer, Player *player, Case *cases)
             }
             else{
                 SDL_Rect case_rect = {
-                    i, j,
+                    i*CASE_SIZE, j*CASE_SIZE,
                     CASE_SIZE, CASE_SIZE};
                 
                 SDL_SetRenderDrawColor(renderer, 173, 173, 173, 255);

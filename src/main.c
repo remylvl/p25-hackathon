@@ -48,6 +48,6 @@ int main(void)
     }
 
     cleanup(window, renderer);
-    return 0;
     free(cases);
+    return 0;
 }
