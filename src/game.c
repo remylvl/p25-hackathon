@@ -82,7 +82,7 @@ void render(SDL_Renderer *renderer, Player *player)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
-
+    
     SDL_Rect player_rect = {
         (int)player->x, (int)player->y,
         player->w, player->h};
