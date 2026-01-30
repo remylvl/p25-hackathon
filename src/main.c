@@ -16,6 +16,7 @@ int main(void)
     bool running = true;
     Uint32 last_ticks = SDL_GetTicks();
 
+
     Player player = {
         .x = CASE_SIZE * 20,
         .y = CASE_SIZE * 20,
