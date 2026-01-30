@@ -40,23 +40,21 @@ void handle_input(bool *running, const Uint8 *keys, Player *player)
             *running = false;
     }
 
-    player->vx = 0.0f;
-    player->vy = 0.0f;
+    player->d = NONE;
     if (keys[SDL_SCANCODE_LEFT])
-        player->vx = -PLAYER_SPEED;
+        player->d = LEFT;
     if (keys[SDL_SCANCODE_RIGHT])
-        player->vx = PLAYER_SPEED;
+        player->d = RIGHT;
     if (keys[SDL_SCANCODE_UP])
-        player->vy = -PLAYER_SPEED;
+        player->d = UP;
     if (keys[SDL_SCANCODE_DOWN])
-        player->vy = PLAYER_SPEED;
+        player->d = DOWN;
 
 }
 
 void update(Player *player, float dt)
 {
-    player->x += player->vx * dt;
-    player->y += player->vy * dt;
+    
 
     if (player->x < 0)
         player->x = 0;
@@ -91,4 +89,8 @@ void cleanup(SDL_Window *window, SDL_Renderer *renderer)
     if (window)
         SDL_DestroyWindow(window);
     SDL_Quit();
+}
+
+void spawn_room(Room* Room){
+    
 }

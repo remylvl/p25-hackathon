@@ -20,7 +20,8 @@ int main(void)
         .x = SCREEN_WIDTH / 2 - PLAYER_WIDTH / 2,
         .y = SCREEN_HEIGHT - 60,
         .w = PLAYER_WIDTH,
-        .h = PLAYER_HEIGHT};
+        .h = PLAYER_HEIGHT,
+        .d = NONE};
 
     while (running)
     {
