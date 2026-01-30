@@ -8,6 +8,15 @@ enum Weapon {
 };
 typedef enum Weapon Weapon;
 
+enum Direction {
+    UP, 
+    DOWN, 
+    LEFT,
+    RIGHT,
+    NONE
+};
+typedef enum Direction Direction;
+
 
 enum Armor {
     NOTHING, //0
@@ -15,15 +24,16 @@ enum Armor {
 };
 typedef enum Armor Armor;
 
-enum Direction {
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT,
-    NONE 
-};
-typedef enum Direction Direction;
+typedef enum {
+    ROOM,
+    CORRIDOR,
+} room_type;
 
+typedef struct {
+    int x, y;
+    int w, h;
+    room_type type;
+} Room;
 
 typedef struct
 {
