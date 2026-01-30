@@ -79,16 +79,3 @@ void update(Player *player)
         player->y = SCREEN_HEIGHT - player->h;
 
 }
-
-
-
-
-Room spawn_room(int *x, int *y, int *w, int *h){
-    Room room = {
-        .x = *x,
-        .y = *y,
-        .w = *w,
-        .h = *h
-    };
-    return room;
-}
