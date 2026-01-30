@@ -24,9 +24,6 @@ int main(void)
         .vx = 0,
         .vy = 0};
 
-    Entity bullet = {0};
-    bool bullet_active = false;
-
     while (running)
     {
         Uint32 ticks = SDL_GetTicks();
@@ -37,9 +34,9 @@ int main(void)
 
         SDL_PumpEvents();
         const Uint8 *keys = SDL_GetKeyboardState(NULL);
-        handle_input(&running, keys, &player, &bullet, &bullet_active);
-        update(&player, &bullet, &bullet_active, dt);
-        render(renderer, &player, &bullet, bullet_active);
+        handle_input(&running, keys, &player);
+        update(&player, dt);
+        render(renderer, &player);
     }
 
     cleanup(window, renderer);
