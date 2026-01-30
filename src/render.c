@@ -14,6 +14,7 @@ void render(SDL_Renderer *renderer, Case *cases)
     
     for (size_t i=0; i<NB_CASE_X; i++){
         for (size_t j=0; j<NB_CASE_Y; j++){
+            if(!cases[i + j * NB_CASE_X].is_visible) continue;
             Case_type case_type_actuel = cases[i+j*NB_CASE_X].case_type;
             SDL_Rect case_rect = {
                     i*CASE_SIZE, j*CASE_SIZE,
@@ -41,7 +42,7 @@ void render(SDL_Renderer *renderer, Case *cases)
                 SDL_RenderCopy(renderer,texture,NULL,&case_rect);
                 break;
                 case WALL :                
-                surface = SDL_LoadBMP("images/wall.bmp");
+                surface = SDL_LoadBMP("images/brick.bmp");
                 texture = SDL_CreateTextureFromSurface(renderer,surface);
                 SDL_FreeSurface(surface);
                 SDL_RenderCopy(renderer,texture,NULL,&case_rect);
@@ -54,6 +55,12 @@ void render(SDL_Renderer *renderer, Case *cases)
                 break;
                 case ITEM :                
                 surface = SDL_LoadBMP("images/chest.bmp");
+                texture = SDL_CreateTextureFromSurface(renderer,surface);
+                SDL_FreeSurface(surface);
+                SDL_RenderCopy(renderer,texture,NULL,&case_rect);
+                break;
+                case PORTE :                
+                surface = SDL_LoadBMP("images/door.bmp");
                 texture = SDL_CreateTextureFromSurface(renderer,surface);
                 SDL_FreeSurface(surface);
                 SDL_RenderCopy(renderer,texture,NULL,&case_rect);
