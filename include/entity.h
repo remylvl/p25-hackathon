@@ -41,6 +41,7 @@ typedef struct {
     int x, y;
     int w, h;
     room_type type;
+    bool is_active;
 } Room;
 
 typedef struct
