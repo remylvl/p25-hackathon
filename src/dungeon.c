@@ -73,6 +73,14 @@ void create_dungeon(Case* cases){
         rooms[k].x = rand() % 5 + ((k%3) * 26);
         rooms[k].y = rand() % 5 + ((k/3) * 20);
         rooms[k].is_active = false;
+        rooms[k].porte_sud.x = 0;
+        rooms[k].porte_sud.y = 0;
+        rooms[k].porte_nord.x = 0;
+        rooms[k].porte_nord.y = 0;
+        rooms[k].porte_est.x = 0;
+        rooms[k].porte_est.y = 0;
+        rooms[k].porte_ouest.x = 0;
+        rooms[k].porte_ouest.y = 0;
         spawn_room(rooms[k].x, rooms[k].y, rooms[k].w, rooms[k].h, cases); 
         // une fois les rooms créés on fais les portes
     }

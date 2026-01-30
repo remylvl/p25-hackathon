@@ -24,12 +24,14 @@ int main(void)
     for (size_t i=0; i < NB_CASE_X; i++){
         for (size_t j=0; j<NB_CASE_Y; j++){
             cases[i+NB_CASE_X*j].case_type = EMPTY;
+            cases[i+NB_CASE_X*j].is_visible = true;
         }
     }
     fontInit();
     Player player = {
         .x = 7,
         .y = 7,
+        .pv = 10,
         .d = NONE};
     
     cases[player.x + player.y * NB_CASE_X].case_type = PLAYER;
