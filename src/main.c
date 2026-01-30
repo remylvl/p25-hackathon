@@ -34,14 +34,15 @@ int main(void)
     {
         Uint32 ticks = SDL_GetTicks();
         float dt = (ticks - last_ticks) / 1000.0f;
-        if (dt < 0.25f)
-            continue;
-        last_ticks = ticks;
-
         SDL_PumpEvents();
         const Uint8 *keys = SDL_GetKeyboardState(NULL);
         handle_input(&running, keys, &player);
-        update(&player, dt);
+        if (dt < 0.1f)
+            continue;
+        last_ticks = ticks;
+
+        
+        update(&player);
         render(renderer, &player);
     }
 

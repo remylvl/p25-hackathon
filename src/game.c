@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "game.h"
 #include <stdio.h>
 
@@ -27,6 +28,7 @@ bool init(SDL_Window **window, SDL_Renderer **renderer)
         SDL_Quit();
         return false;
     }
+    
 
     return true;
 }
@@ -52,7 +54,7 @@ void handle_input(bool *running, const Uint8 *keys, Player *player)
 
 }
 
-void update(Player *player, float dt)
+void update(Player *player)
 {
     switch(player->d){
         case UP: player->y -= CASE_SIZE;
@@ -82,20 +84,22 @@ void render(SDL_Renderer *renderer, Player *player)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
+
     
-    SDL_Rect player_rect = {
-        (int)player->x, (int)player->y,
-        player->w, player->h};
-    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-    SDL_RenderFillRect(renderer, &player_rect);
+	SDL_Surface *surface=SDL_LoadBMP("images/hero.bmp");
+    SDL_Texture *texture=SDL_CreateTextureFromSurface(renderer,surface);
+    SDL_FreeSurface(surface);
+    SDL_Rect rect = {player->x,player->y,player->w,player->h};
+    SDL_RenderCopy(renderer,texture,NULL,&rect);
 
     SDL_RenderPresent(renderer);
 }
 
 void cleanup(SDL_Window *window, SDL_Renderer *renderer)
 {
-    if (renderer)
+    if (renderer){
         SDL_DestroyRenderer(renderer);
+        }
     if (window)
         SDL_DestroyWindow(window);
     SDL_Quit();
