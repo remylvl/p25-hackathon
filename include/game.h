@@ -24,5 +24,6 @@ void render(SDL_Renderer *renderer, Case *cases);
 void cleanup(SDL_Window *window, SDL_Renderer *renderer);
 void spawn_room(int x, int y, int w, int h, Case* cases);
 void spawn_corridor(Case porte1, Case porte2, Case* cases);
+void create_dungeon(Case* cases);
 
 #endif
