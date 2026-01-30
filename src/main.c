@@ -35,7 +35,6 @@ int main(void)
         .weapon = 0,
         .armor = 0,
         .d = NONE};
-    
     cases[player.x + player.y * NB_CASE_X].case_type = PLAYER;
 
     create_dungeon(cases);

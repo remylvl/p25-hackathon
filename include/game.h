@@ -30,5 +30,5 @@ void spawn_cow_in_room(Room *room, Case *cases);
 void spawn_chest_in_room(Room *room, Case *cases);
 void spawn_corridorx(doublet porte1, doublet porte2, Case* cases);
 void spawn_corridory(doublet porte1, doublet porte2, Case* cases);
-
+void fontInit();
 #endif

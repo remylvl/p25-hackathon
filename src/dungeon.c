@@ -156,4 +156,5 @@ void create_dungeon(Case* cases){
             spawn_corridory(rooms[k-1].porte_est, rooms[k].porte_ouest, cases);
         }
     }
+    free(rooms);
 }

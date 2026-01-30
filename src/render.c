@@ -14,7 +14,7 @@ TTF_Font* font;
 
 void fontInit(){
         TTF_Init();
-        font = TTF_OpenFont("./font/ARIAL.TTF", 20);
+        font = TTF_OpenFont("font/ARIAL.TTF", 20);
         fColor.r = 255;
         fColor.g = 255;
         fColor.b = 255;
@@ -111,7 +111,7 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate)
 
 
     //INFORMATIONS RENDER
-    char level[] = "Level 1 : 1    Health : ";
+    /*char level[] = "Level 1 : 1    Health : ";
     SDL_Surface *text = TTF_RenderUTF8_Solid(font, "Level : %d    Health : %d    Weapon : %s    Armor : %s    Gold : %d", (SDL_Color) {255, 255, 0, 255});
     SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text);
 
@@ -121,7 +121,7 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate)
         text->w,  // width
         text->h   // height
     };
-    SDL_RenderCopy(renderer, text_texture, NULL, &text_rect);
+    SDL_RenderCopy(renderer, text_texture, NULL, &text_rect);*/
     
 
     SDL_RenderPresent(renderer);
