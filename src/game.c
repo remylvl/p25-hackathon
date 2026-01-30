@@ -1,8 +1,9 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "game.h"
 #include <stdio.h>
 
-bool init(SDL_Window **window, SDL_Renderer **renderer)
+bool init(SDL_Window **window, SDL_Renderer **renderer, SDL_Texture *img)
 {
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
@@ -27,6 +28,8 @@ bool init(SDL_Window **window, SDL_Renderer **renderer)
         SDL_Quit();
         return false;
     }
+    img = IMG_LoadTexture(renderer, "images/hero.png");
+    
 
     return true;
 }
@@ -78,24 +81,26 @@ void update(Player *player, float dt)
 
 }
 
-void render(SDL_Renderer *renderer, Player *player)
+void render(SDL_Renderer *renderer, Player *player, SDL_Texture *img)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    SDL_Rect player_rect = {
-        (int)player->x, (int)player->y,
-        player->w, player->h};
-    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-    SDL_RenderFillRect(renderer, &player_rect);
+    
+	SDL_Surface *surface=SDL_LoadBMP("images/hero.bmp");
+    SDL_Texture *texture=SDL_CreateTextureFromSurface(renderer,surface);
+    SDL_FreeSurface(surface);
+    SDL_Rect rect = {player->x,player->y,player->w,player->h};
+    SDL_RenderCopy(renderer,texture,NULL,&rect);
 
     SDL_RenderPresent(renderer);
 }
 
 void cleanup(SDL_Window *window, SDL_Renderer *renderer)
 {
-    if (renderer)
+    if (renderer){
         SDL_DestroyRenderer(renderer);
+        }
     if (window)
         SDL_DestroyWindow(window);
     SDL_Quit();
