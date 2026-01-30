@@ -28,10 +28,12 @@ int main(void)
 
     Player player = {
         .x = 40,
-        .y = 20,
+        .y = 30,
         .d = NONE};
     
     cases[player.x + player.y * NB_CASE_X].case_type = PLAYER;
+
+    spawn_room(30, 20, 20, 20, cases);
 
     while (running)
     {
