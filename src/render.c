@@ -20,25 +20,27 @@ void render(SDL_Renderer *renderer, Case *cases)
             SDL_Surface *surface;
             SDL_Texture *texture;
 
-            switch(case_type_actuel){
-                case WALL : 
-                SDL_SetRenderDrawColor(renderer, 77, 27, 0, 255);
-                SDL_RenderFillRect(renderer, &case_rect);
-                break;
-                case PLAYER :
+            if (case_type_actuel != EMPTY)
+            {
                 surface = SDL_LoadBMP("images/inside.bmp");
-                texture = SDL_CreateTextureFromSurface(renderer,surface);
-                SDL_FreeSurface(surface);
-                SDL_RenderCopy(renderer,texture,NULL,&case_rect);
-                surface = SDL_LoadBMP("images/hero.bmp");
-                texture = SDL_CreateTextureFromSurface(renderer,surface);
-                SDL_FreeSurface(surface);
-                SDL_RenderCopy(renderer,texture,NULL,&case_rect);
-                break;
-                default : break;
-
-
+                    texture = SDL_CreateTextureFromSurface(renderer,surface);
+                    SDL_FreeSurface(surface);
+                    SDL_RenderCopy(renderer,texture,NULL,&case_rect);
+                switch(case_type_actuel){
+                    case WALL : 
+                    SDL_SetRenderDrawColor(renderer, 77, 27, 0, 255);
+                    SDL_RenderFillRect(renderer, &case_rect);
+                    break;
+                    case PLAYER :
+                    surface = SDL_LoadBMP("images/hero.bmp");
+                    texture = SDL_CreateTextureFromSurface(renderer,surface);
+                    SDL_FreeSurface(surface);
+                    SDL_RenderCopy(renderer,texture,NULL,&case_rect);
+                    break;
+                    default : break;
             }
+            }
+            
         }
     }
 	
