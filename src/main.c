@@ -27,8 +27,8 @@ int main(void)
     }
 
     Player player = {
-        .x = 5,
-        .y = 5,
+        .x = 7,
+        .y = 7,
         .d = NONE};
     
     cases[player.x + player.y * NB_CASE_X].case_type = PLAYER;
