@@ -2,6 +2,7 @@
 #include <SDL2/SDL_image.h>
 #include "game.h"
 #include "entity.h"
+#include "dungeon.h"
 #include <stdio.h>
 
 
