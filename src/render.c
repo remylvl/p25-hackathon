@@ -58,18 +58,7 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate, Player pla
     }
 
 
-    //INFORMATIONS RENDER
-    /*char level[] = "Level 1 : 1    Health : ";
-    SDL_Surface *text = TTF_RenderUTF8_Solid(font, "Level : %d    Health : %d    Weapon : %s    Armor : %s    Gold : %d", (SDL_Color) {255, 255, 0, 255});
-    SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text);
-
-    SDL_Rect text_rect = {
-        20,
-        SCREEN_WIDTH - 2*CASE_SIZE,
-        text->w,  // width
-        text->h   // height
-    };
-    SDL_RenderCopy(renderer, text_texture, NULL, &text_rect);*/
+    
     
     else
     {
@@ -168,6 +157,10 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate, Player pla
 
         }
     
+
+
+
+        
     } 
     SDL_RenderPresent(renderer);
 }
