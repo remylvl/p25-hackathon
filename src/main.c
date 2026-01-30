@@ -27,8 +27,8 @@ int main(void)
     }
 
     Player player = {
-        .x = 5,
-        .y = 5,
+        .x = 7,
+        .y = 7,
         .d = NONE};
     
     cases[player.x + player.y * NB_CASE_X].case_type = PLAYER;
@@ -39,14 +39,13 @@ int main(void)
     {
         Uint32 ticks = SDL_GetTicks();
         float dt = (ticks - last_ticks) / 1000.0f;
-        SDL_PumpEvents();
-        const Uint8 *keys = SDL_GetKeyboardState(NULL);
-        handle_input(&running, keys, &player, &gamestate);
-        if (dt < 0.1f)
+        if (dt < 0.05f)
             continue;
         last_ticks = ticks;
 
-        
+        SDL_PumpEvents();
+        const Uint8 *keys = SDL_GetKeyboardState(NULL);
+        handle_input(&running, keys, &player, &gamestate);
         update(&player, cases);
         render(renderer, cases);
     }
