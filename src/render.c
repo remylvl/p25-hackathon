@@ -11,14 +11,42 @@ void render(SDL_Renderer *renderer, Player *player, Case *cases)
 
     for (size_t i=0; i<NB_CASE_X; i++){
         for (size_t j=0; j<NB_CASE_Y; i++){
-            
+            Case_type case_type_actuel = cases[i+j*NB_CASE_X].case_type;
+            if ( case_type_actuel == WALL){
+                SDL_Rect case_rect = {
+                    i, j,
+                    CASE_SIZE, CASE_SIZE};
+                
+                SDL_SetRenderDrawColor(renderer, 77, 27, 0, 255);
+                SDL_RenderFillRect(renderer, &case_rect);
+            }
+            else if (case_type_actuel == EMPTY){
+                SDL_Rect case_rect = {
+                    i, j,
+                    CASE_SIZE, CASE_SIZE};
+                
+                SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                SDL_RenderFillRect(renderer, &case_rect);
+            }
+            else{
+                SDL_Rect case_rect = {
+                    i, j,
+                    CASE_SIZE, CASE_SIZE};
+                
+                SDL_SetRenderDrawColor(renderer, 173, 173, 173, 255);
+                SDL_RenderFillRect(renderer, &case_rect);
+                
+                if(case_type_actuel == PLAYER){
+                    SDL_Surface *surface=SDL_LoadBMP("images/hero.bmp");
+                    SDL_Texture *texture=SDL_CreateTextureFromSurface(renderer,surface);
+                    SDL_FreeSurface(surface);
+                    SDL_Rect rect = {i*CASE_SIZE,j*CASE_SIZE,player->w,player->h};
+                    SDL_RenderCopy(renderer,texture,NULL,&rect);
+                }
+            }
         }
     }
-	SDL_Surface *surface=SDL_LoadBMP("images/hero.bmp");
-    SDL_Texture *texture=SDL_CreateTextureFromSurface(renderer,surface);
-    SDL_FreeSurface(surface);
-    SDL_Rect rect = {player->x,player->y,player->w,player->h};
-    SDL_RenderCopy(renderer,texture,NULL,&rect);
+	
 
     SDL_RenderPresent(renderer);
 }

@@ -43,7 +43,7 @@ int main(void)
 
         
         update(&player);
-        render(renderer, &player);
+        render(renderer, &player, cases);
     }
 
     cleanup(window, renderer);
