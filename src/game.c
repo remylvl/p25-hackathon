@@ -54,41 +54,39 @@ void handle_input(bool *running, const Uint8 *keys, Player *player)
 
 }
 
-void update(Player *player)
+void update(Player *player, Case *cases)
 {
     switch(player->d){
-        case UP: player->y -= CASE_SIZE;
+        case UP: 
+        if(cases[player->x + NB_CASE_X * (player->y-1)].case_type != EMPTY && cases[player->x + NB_CASE_X * (player->y-1)].case_type != WALL){        
+        cases[player->x + NB_CASE_X * (player->y-1)].case_type = PLAYER;
+        cases[player->x + NB_CASE_X * player->y].case_type = INSIDE;
+        player->y -= CASE_SIZE;
+        }
         break;
-        case DOWN: player->y += CASE_SIZE;
+        case DOWN: 
+        if(cases[player->x + NB_CASE_X * (player->y+1)].case_type != EMPTY && cases[player->x + NB_CASE_X * (player->y+1)].case_type != WALL){        
+        cases[player->x + NB_CASE_X * (player->y+1)].case_type = PLAYER;
+        cases[player->x + NB_CASE_X * player->y].case_type = INSIDE;
+        player->y += CASE_SIZE;
+        }
         break;
-        case LEFT: player->x -= CASE_SIZE;
+        case LEFT:
+        if(cases[player->x + NB_CASE_X * player->y - 1].case_type != EMPTY && cases[player->x + NB_CASE_X * player->y - 1].case_type != WALL){        
+        cases[player->x + NB_CASE_X * player->y - 1].case_type = PLAYER;
+        cases[player->x + NB_CASE_X * player->y].case_type = INSIDE;
+        player->x -= CASE_SIZE;
+        }
         break;
-        case RIGHT: player->x += CASE_SIZE;
+        case RIGHT: 
+        if(cases[player->x + NB_CASE_X * player->y + 1].case_type != EMPTY && cases[player->x + NB_CASE_X * player->y + 1].case_type != WALL){        
+        cases[player->x + NB_CASE_X * player->y + 1].case_type = PLAYER;
+        cases[player->x + NB_CASE_X * player->y].case_type = INSIDE;
+        player->x += CASE_SIZE;
+        }
         break;
         default: break;
     }
 
-    if (player->x < 0)
-        player->x = 0;
-    if (player->x + player->w > SCREEN_WIDTH)
-        player->x = SCREEN_WIDTH - player->w;
 
-    if (player->y < 0)
-        player->y = 0;
-    if (player->y + player->h > SCREEN_HEIGHT)
-        player->y = SCREEN_HEIGHT - player->h;
-
-}
-
-
-
-
-Room spawn_room(int *x, int *y, int *w, int *h){
-    Room room = {
-        .x = *x,
-        .y = *y,
-        .w = *w,
-        .h = *h
-    };
-    return room;
 }

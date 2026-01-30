@@ -43,7 +43,7 @@ int main(void)
         last_ticks = ticks;
 
         
-        update(&player);
+        update(&player, &cases);
         render(renderer, &player);
     }
 
