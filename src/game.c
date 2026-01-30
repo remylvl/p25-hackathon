@@ -31,7 +31,7 @@ bool init(SDL_Window **window, SDL_Renderer **renderer)
     return true;
 }
 
-void handle_input(bool *running, const Uint8 *keys, Entity *player)
+void handle_input(bool *running, const Uint8 *keys, Player *player)
 {
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -53,7 +53,7 @@ void handle_input(bool *running, const Uint8 *keys, Entity *player)
 
 }
 
-void update(Entity *player, float dt)
+void update(Player *player, float dt)
 {
     player->x += player->vx * dt;
     player->y += player->vy * dt;
@@ -70,7 +70,7 @@ void update(Entity *player, float dt)
 
 }
 
-void render(SDL_Renderer *renderer, Entity *player)
+void render(SDL_Renderer *renderer, Player *player)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);

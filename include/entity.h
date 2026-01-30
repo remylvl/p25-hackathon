@@ -23,13 +23,13 @@ typedef struct
     armor armor;
     weapon weapon;
     
-} player;
+} Player;
 
 
 typedef struct
 {
 
-} monster;
+} Monster;
 
 
 
