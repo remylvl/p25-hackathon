@@ -1,35 +1,35 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-enum weapon {
-    stick, //0
-    knife, //1
-    sword //2
+enum Weapon {
+    STICK, //0
+    KNIFE, //1
+    SWORD //2
 };
-typedef enum weapon weapon;
+typedef enum Weapon Weapon;
 
 
-enum armor {
-    nothing, //0
-    metal //1
+enum Armor {
+    NOTHING, //0
+    METAL //1
 };
-typedef enum armor armor;
+typedef enum Armor Armor;
 
 
 typedef struct
 {
     int x, y;
     int pv;
-    armor armor;
-    weapon weapon;
-    
-} player;
+    int w, h;
+    Armor armor;
+    Weapon weapon;
+} Player;
 
 
 typedef struct
 {
 
-} monster;
+} Monster;
 
 
 
