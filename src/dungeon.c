@@ -70,12 +70,12 @@ void spawn_corridorx(doublet porte1, doublet porte2, Case* cases){
         cases[k + porte1.y * NB_CASE_X].case_type = INSIDE;
     }
     if (porte1.y < porte2.y){
-        for (int k = porte1.y ; porte2.y + 1 ; k++){
+        for (int k = porte1.y ; k < porte2.y + 1 ; k++){
             cases[porte2.x - 1 + k*NB_CASE_X].case_type = INSIDE;
         }
     }
     if (porte2.y <= porte1.y){
-        for (int k = porte2.y ; porte1.y + 1 ; k++){
+        for (int k = porte2.y ; k < porte1.y + 1 ; k++){
             cases[porte2.x - 1 + k*NB_CASE_X].case_type = INSIDE;
         }
     }
@@ -86,12 +86,12 @@ void spawn_corridory(doublet porte1, doublet porte2, Case* cases){
         cases[porte1.x + k * NB_CASE_X].case_type = INSIDE;
     }
     if (porte1.x < porte2.x){
-        for (int k = porte1.x ; porte2.x + 1 ; k++){
+        for (int k = porte1.x ; k < porte2.x + 1 ; k++){
             cases[k + (porte2.y -1)*NB_CASE_X].case_type = INSIDE;
         }
     }
     if (porte2.x <= porte1.x){
-        for (int k = porte2.x ; porte1.x + 1 ; k++){
+        for (int k = porte2.x ; k < porte1.x + 1 ; k++){
             cases[k + (porte2.y -1)*NB_CASE_X].case_type = INSIDE;
         }
     }
@@ -156,4 +156,5 @@ void create_dungeon(Case* cases){
             spawn_corridory(rooms[k-1].porte_est, rooms[k].porte_ouest, cases);
         }
     }
+    free(rooms);
 }

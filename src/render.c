@@ -142,7 +142,7 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate, Player pla
 
             if(player.armor){
                 SDL_Surface* fontSurface_Armor = TTF_RenderText_Solid(font, "TORN_TUNIC", fColor);
-                if (fontSurface) {
+                if (fontSurface_Armor) {
                     SDL_Texture* fontTexture_Armor = SDL_CreateTextureFromSurface(renderer, fontSurface_Armor);
                     SDL_Rect fontRect_Armor = {12*CASE_SIZE, 8*CASE_SIZE, fontSurface_Armor->w, fontSurface_Armor->h};
                     SDL_RenderCopy(renderer, fontTexture_Armor, NULL, &fontRect_Armor);
