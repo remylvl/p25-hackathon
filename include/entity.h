@@ -15,6 +15,16 @@ enum Armor {
 };
 typedef enum Armor Armor;
 
+typedef enum {
+    ROOM,
+    CORRIDOR,
+} room_type;
+
+typedef struct {
+    int x, y;
+    int w, h;
+    room_type type;
+} Room;
 
 typedef struct
 {
