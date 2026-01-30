@@ -32,6 +32,8 @@ int main(void)
         .x = 7,
         .y = 7,
         .pv = 10,
+        .weapon = 0,
+        .armor = 0,
         .d = NONE};
     
     cases[player.x + player.y * NB_CASE_X].case_type = PLAYER;
