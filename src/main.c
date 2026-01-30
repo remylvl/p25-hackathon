@@ -47,7 +47,7 @@ int main(void)
         const Uint8 *keys = SDL_GetKeyboardState(NULL);
         handle_input(&running, keys, &player, &gamestate);
         update(&player, cases);
-        render(renderer, cases);
+        render(renderer, cases, gamestate);
     }
 
     cleanup(window, renderer);
