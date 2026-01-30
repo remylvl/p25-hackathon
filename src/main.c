@@ -43,8 +43,13 @@ int main(void)
         last_ticks = ticks;
 
         
+<<<<<<< HEAD
+        update(&player, &cases);
+        render(renderer, &player);
+=======
         update(&player);
         render(renderer, &player, cases);
+>>>>>>> 0d25ba7080839353a37d1758d93df6b4916e5862
     }
 
     cleanup(window, renderer);
