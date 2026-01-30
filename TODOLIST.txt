@@ -1,0 +1,8 @@
+NIVEAU 1
+* Créer struc_def monstre, joueur, salle/couleur, items
+* Une salle (déterministe) (sous la forme d'une fonction créer salle) : rectangle SDL blanc
+* Un couloir (déterministe) (sous la forme d'une fonction créer couleur) : rectangle SDL rouge
+* Apparition de monstres (con) ou rush le joueur
+* Créer un gamestate avec menu et inventaire (enum)
+* Adapter les fonctions update et handle_keys
+* Adapter render
