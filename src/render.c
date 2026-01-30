@@ -46,6 +46,7 @@ void render(SDL_Renderer *renderer, Case *cases)
 
 
             }
+            
         }
     }
 	
