@@ -40,8 +40,5 @@ typedef enum {
     INVENTORY,
 } Gamestate;
 
-typedef struct{
-    int x, y;
-}doublet;
 
 #endif
