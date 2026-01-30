@@ -57,53 +57,31 @@ void handle_input(bool *running, const Uint8 *keys, Player *player)
 void update(Player *player)
 {
     switch(player->d){
-        case UP: player->y -= 1;
+        case UP: player->y -= CASE_SIZE;
         break;
-        case DOWN: player->y += 1;
+        case DOWN: player->y += CASE_SIZE;
         break;
-        case LEFT: player->x -= 1;
+        case LEFT: player->x -= CASE_SIZE;
         break;
-        case RIGHT: player->x += 1;
+        case RIGHT: player->x += CASE_SIZE;
         break;
         default: break;
     }
 
     if (player->x < 0)
         player->x = 0;
-    if (player->x  > NB_CASE_X)
-        player->x = NB_CASE_X;
+    if (player->x + player->w > SCREEN_WIDTH)
+        player->x = SCREEN_WIDTH - player->w;
 
     if (player->y < 0)
         player->y = 0;
-    if (player->y > NB_CASE_Y)
-        player->y = NB_CASE_Y;
+    if (player->y + player->h > SCREEN_HEIGHT)
+        player->y = SCREEN_HEIGHT - player->h;
 
 }
 
-void render(SDL_Renderer *renderer, Player *player)
-{
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
 
-    
-	SDL_Surface *surface=SDL_LoadBMP("images/hero.bmp");
-    SDL_Texture *texture=SDL_CreateTextureFromSurface(renderer,surface);
-    SDL_FreeSurface(surface);
-    SDL_Rect rect = {player->x*CASE_SIZE,player->y*CASE_SIZE,PLAYER_WIDTH,PLAYER_HEIGHT};
-    SDL_RenderCopy(renderer,texture,NULL,&rect);
 
-    SDL_RenderPresent(renderer);
-}
-
-void cleanup(SDL_Window *window, SDL_Renderer *renderer)
-{
-    if (renderer){
-        SDL_DestroyRenderer(renderer);
-        }
-    if (window)
-        SDL_DestroyWindow(window);
-    SDL_Quit();
-}
 
 Room spawn_room(int *x, int *y, int *w, int *h){
     Room room = {
