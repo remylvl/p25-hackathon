@@ -3,7 +3,7 @@
 #include "game.h"
 #include <stdio.h>
 
-bool init(SDL_Window **window, SDL_Renderer **renderer, SDL_Texture *img)
+bool init(SDL_Window **window, SDL_Renderer **renderer)
 {
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
@@ -28,7 +28,6 @@ bool init(SDL_Window **window, SDL_Renderer **renderer, SDL_Texture *img)
         SDL_Quit();
         return false;
     }
-    img = IMG_LoadTexture(renderer, "images/hero.png");
     
 
     return true;
@@ -55,7 +54,7 @@ void handle_input(bool *running, const Uint8 *keys, Player *player)
 
 }
 
-void update(Player *player, float dt)
+void update(Player *player)
 {
     switch(player->d){
         case UP: player->y -= CASE_SIZE;
@@ -81,7 +80,7 @@ void update(Player *player, float dt)
 
 }
 
-void render(SDL_Renderer *renderer, Player *player, SDL_Texture *img)
+void render(SDL_Renderer *renderer, Player *player)
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);

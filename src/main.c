@@ -7,9 +7,8 @@ int main(void)
 {
     SDL_Window *window = NULL;
     SDL_Renderer *renderer = NULL;
-    SDL_Texture *img = NULL;
 
-    if (!init(&window, &renderer, &img))
+    if (!init(&window, &renderer))
     {
         return 1;
     }
@@ -43,8 +42,8 @@ int main(void)
         last_ticks = ticks;
 
         
-        update(&player, dt);
-        render(renderer, &player, &img);
+        update(&player);
+        render(renderer, &player);
     }
 
     cleanup(window, renderer);
