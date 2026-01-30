@@ -16,13 +16,12 @@ int main(void)
     bool running = true;
     Uint32 last_ticks = SDL_GetTicks();
 
-    Entity player = {
+    Player player = {
         .x = SCREEN_WIDTH / 2 - PLAYER_WIDTH / 2,
         .y = SCREEN_HEIGHT - 60,
         .w = PLAYER_WIDTH,
         .h = PLAYER_HEIGHT,
-        .vx = 0,
-        .vy = 0};
+        .d = NONE};
 
     while (running)
     {
