@@ -32,7 +32,7 @@ enum case_type {
     ITEM,
     MONSTER,
 };
-typedef enum case_type case_type
+typedef enum case_type case_type;
 
 typedef struct 
 {
@@ -47,14 +47,10 @@ typedef struct
 {
     int x, y;
     int w, h;
-<<<<<<< HEAD
-=======
-    room_type type;
     bool is_active;
->>>>>>> d9c58174541b4324694150138d1caacf43fbb1d9
 } Room;
 
-type def struct
+typedef struct
 {
     
 } CORRIDOR;
