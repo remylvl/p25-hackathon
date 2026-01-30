@@ -27,13 +27,13 @@ int main(void)
     }
 
     Player player = {
-        .x = 40,
-        .y = 30,
+        .x = 5,
+        .y = 5,
         .d = NONE};
     
     cases[player.x + player.y * NB_CASE_X].case_type = PLAYER;
 
-    spawn_room(30, 20, 20, 20, cases);
+    create_dungeon(cases);
 
     while (running)
     {

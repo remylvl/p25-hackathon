@@ -72,5 +72,6 @@ void create_dungeon(Case* cases){
         rooms[k].x = rand() % 5 + ((k%3) * 26);
         rooms[k].y = rand() % 5 + ((k/3) * 20);
         rooms[k].is_active = false;
+        spawn_room(rooms[k].x, rooms[k].y, rooms[k].w, rooms[k].h, cases);
     }
 }
