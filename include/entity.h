@@ -59,7 +59,6 @@ typedef struct
 {
     int x, y;
     int pv;
-    int w, h;
     Armor armor;
     Weapon weapon;
     Direction d;
