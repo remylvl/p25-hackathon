@@ -30,8 +30,10 @@ void render(SDL_Renderer *renderer, Case *cases)
 
             switch(case_type_actuel){
                 case WALL : 
-                SDL_SetRenderDrawColor(renderer, 77, 27, 0, 255);
-                SDL_RenderFillRect(renderer, &case_rect);
+                surface = SDL_LoadBMP("images/wall.bmp");
+                texture = SDL_CreateTextureFromSurface(renderer,surface);
+                SDL_FreeSurface(surface);
+                SDL_RenderCopy(renderer,texture,NULL,&case_rect);
                 break;
                 case EMPTY :
                 SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
