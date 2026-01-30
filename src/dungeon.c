@@ -3,6 +3,7 @@
 #include "entity.h"
 #include "game.h"
 #include <stdlib.h>
+#include "dungeon.h"
 
 //x et y sont le coin en haut à gauche de la room
 void spawn_room(int x, int y, int w, int h, Case* cases){
@@ -72,6 +73,25 @@ void create_dungeon(Case* cases){
         rooms[k].x = rand() % 5 + ((k%3) * 26);
         rooms[k].y = rand() % 5 + ((k/3) * 20);
         rooms[k].is_active = false;
-        spawn_room(rooms[k].x, rooms[k].y, rooms[k].w, rooms[k].h, cases);
+        spawn_room(rooms[k].x, rooms[k].y, rooms[k].w, rooms[k].h, cases); 
+        // une fois les rooms créés on fais les portes
+    }
+    for (int k = 0 ; k < 9 ; k++){
+        if (k>2){
+            int xp = rand() % (rooms[k].w - 2) + rooms[k].x + 1;
+            cases[xp + rooms[k].y * NB_CASE_X].case_type = PORTE;
+        }
+        if (k<6){
+            int xp = rand() % (rooms[k].w - 2) + rooms[k].x + 1;
+            cases[xp + (rooms[k].y+rooms[k].h -1) * NB_CASE_X].case_type = PORTE;
+        }
+        if (k%3 != 2){
+            int yp = rand() % (rooms[k].h - 2) + rooms[k].y + 1;
+            cases[(rooms[k].x + rooms[k].w - 1) + (rooms[k].y + rooms[k].h - 1)*NB_CASE_X ].case_type = PORTE;
+        }
+        if (k%3 != 0){
+            int yp = rand() % (rooms[k].h - 2) + rooms[k].y + 1;
+            cases[rooms[k].x  + (rooms[k].y + rooms[k].h - 1)*NB_CASE_X ].case_type = PORTE;
+        }
     }
 }
