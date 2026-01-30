@@ -6,6 +6,7 @@
 #include "dungeon.h"
 #include <stdio.h>
 #include <SDL2/SDL_ttf.h>
+#include <string.h>
 
 SDL_Color fColor;
 SDL_Rect fontRect;
@@ -25,6 +26,7 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
+    //CASES RENDER
     for (size_t i=0; i<NB_CASE_X; i++){
 
         for (size_t j=0; j<NB_CASE_Y; j++){
@@ -88,7 +90,8 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate)
             
         }
     }
-	
+
+	//INVENTORY RENDER
     if (gamestate==1){
         SDL_Rect inventory_rect1 = {
                     10*CASE_SIZE, 5*CASE_SIZE,
@@ -105,6 +108,20 @@ void render(SDL_Renderer *renderer, Case *cases, Gamestate gamestate)
             SDL_FreeSurface(fontSurface);
         }
     }
+
+
+    //INFORMATIONS RENDER
+    char level[] = "Level 1 : 1    Health : ";
+    SDL_Surface *text = TTF_RenderUTF8_Solid(font, "Level : %d    Health : %d    Weapon : %s    Armor : %s    Gold : %d", (SDL_Color) {255, 255, 0, 255});
+    SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text);
+
+    SDL_Rect text_rect = {
+        20,
+        SCREEN_WIDTH - 2*CASE_SIZE,
+        text->w,  // width
+        text->h   // height
+    };
+    SDL_RenderCopy(renderer, text_texture, NULL, &text_rect);
     
 
     SDL_RenderPresent(renderer);

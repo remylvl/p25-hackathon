@@ -60,7 +60,7 @@ void spawn_corridor(doublet porte1, doublet porte2, Case* cases){
             cases[k + y2*NB_CASE_X].case_type = INSIDE;
         }
     }
-    for (int k = ymin + 1; k < ymax ; k++){
+    for (int k = ymin + 1; k < ymax + 1 ; k++){
         cases[xmax - 1 + k*NB_CASE_X].case_type = INSIDE;
     }   
 }
@@ -70,8 +70,8 @@ void create_dungeon(Case* cases){
     for (int k = 0 ; k < 9 ; k++){
         rooms[k].w = rand() % 11 + 12;
         rooms[k].h = rand() % 11 + 5;
-        rooms[k].x = rand() % 5 + ((k%3) * 26);
-        rooms[k].y = rand() % 5 + ((k/3) * 20);
+        rooms[k].x = rand() % 4 + ((k%3) * 26);
+        rooms[k].y = rand() % 3 + ((k/3) * 20);
         rooms[k].is_active = false;
         rooms[k].porte_sud.x = 0;
         rooms[k].porte_sud.y = 0;
