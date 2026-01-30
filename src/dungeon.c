@@ -150,10 +150,10 @@ void create_dungeon(Case* cases){
     //maintenant on crée les couloirs
     for (int k = 0; k<9 ; k++){
         if (k>2){
-            spawn_corridorx(rooms[k-3].porte_sud, rooms[k].porte_nord,  cases);
+            spawn_corridory(rooms[k-3].porte_sud, rooms[k].porte_nord,  cases);
         }
         if (k%3 != 0){
-            spawn_corridory(rooms[k-1].porte_est, rooms[k].porte_ouest, cases);
+            spawn_corridorx(rooms[k-1].porte_est, rooms[k].porte_ouest, cases);
         }
     }
     free(rooms);
